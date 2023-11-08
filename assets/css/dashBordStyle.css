@@ -1,0 +1,77 @@
+/*#dashBack {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url("../images/smartphone-background.jpg")center center;
+    background-size: cover;
+}*/
+#backImg {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+#dashBord-logo {
+    position: absolute;
+    top: 100px;
+    left: 500px;
+    width: 100px;
+    background: white;
+    border-radius: 100%;
+}
+.con-div {
+    background-color: #E3F4F4;
+    width: 500px;
+    height: 120px;
+    border: 5px solid #6ea8fe;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding-left: 40px;
+    padding-top: 10px;
+}
+#customerBtn {
+    position: absolute;
+    top: 50px;
+    left: 900px;
+    border-color: coral;
+}
+#customerBtn > img {
+    width: 80px;
+}
+#itemBtn {
+    position: absolute;
+    top: 200px;
+    left: 900px;
+}
+#itemBtn > img {
+    width: 80px;
+}
+#orderBtn {
+    position: absolute;
+    top: 350px;
+    left: 900px;
+    border-color: red;
+}
+#orderBtn > img {
+    width: 80px;
+}
+.firstLabel {
+    font-weight: bold;
+    font-size: 40px;
+    font-family: "Book Antiqua", serif;
+    position: absolute;
+    left: 160px;
+}
+.secondLabel {
+    font-size: 15px;
+    font-family: "Lucida Handwriting", serif;
+    position: absolute;
+    top: 80px;
+    left: 200px;
+}
+#logOutBtn {
+    position: absolute;
+    top: 600px;
+    left: 88vw;
+    height: 60px;
+    width: 100px;
+}

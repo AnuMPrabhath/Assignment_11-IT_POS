@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HandPhone Store</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/mobile-phone-shop-logo.jpg">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashBordStyle.css">
+    <link rel="stylesheet" href="assets/css/customerStyle.css">
+    <link rel="stylesheet" href="assets/css/itemStyle.css">
+    <link rel="stylesheet" href="assets/css/orderStyle.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/bootstrapCSS/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+</head>
+<body>
+<section id="loginSection">
+    <div id="back">
+        <div>
+            <h1>Sign In</h1>
+            <img src="assets/images/mobile-phone-shop-logo.jpg" id="loginLogo">
+            <div class="mb-3 col-lg-9 col-md-4" id="userDiv">
+                <label for="userName" class="form-label">User Name :</label>
+                <input type="text" class="form-control" id="userName" placeholder="@user">
+            </div>
+
+            <div class="mb-3 col-lg-9 col-md-4" id="passDiv">
+                <label for="password" class="form-label">Password :</label>
+                <input type="password" class="form-control" id="password" placeholder="*****">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary mb-1" id="signInBtn" >Sign In</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="dashboardSection">
+    <div id="#dashBack">
+        <img src="assets/images/smartphone-background.jpg" id="backImg" alt="background">
+        <img src="assets/images/mobile-phone-shop-logo.jpg" id="dashBord-logo" alt="shop-logo">
+        <div id="customerBtn" class="con-div">
+                <img src="assets/images/customer.png"  alt="customer.png">
+                <label class="firstLabel">Customer</label>
+                <label class="secondLabel">management form here..</label>
+        </div>
+        <div id="itemBtn" class="con-div">
+                <img src="assets/images/item.png"  alt="item.png">
+                <label class="firstLabel">Item</label>
+                <label class="secondLabel">management form here..</label>
+        </div>
+        <div id="orderBtn" class="con-div">
+                <img src="assets/images/cart.png" alt="order.png">
+                <label class="firstLabel">Order</label>
+                <label class="secondLabel">management form here..</label>
+        </div>
+            <button type="button" class="btn btn-danger mb-1" id="logOutBtn">LogOut</button>
+    </div>
+</section>
+<section id="navBarSection">
+    <header>
+        <nav id="nav_bar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/images/mobile-phone-shop-logo.jpg" alt="Logo" class="d-inline-block align-text-top" width="100px" height="80px">
+                    <label id="title"></label>
+                </a>
+                <ul class="nav nav-tabs">
+                    <li id="navDashBord" class="nav-item">
+                        <a id="dashboard" class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item" id="navCustomer">
+                        <a id="customer" class="nav-link" href="#">Customer</a>
+                    </li>
+                    <li class="nav-item" id="navItem">
+                        <a id="item" class="nav-link" href="#">Item</a>
+                    </li>
+                    <li class="nav-item" id="navOrder">
+                        <a id="order" class="nav-link" href="#">Order</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</section>
+<section id="customerSection">
+    <div class="div-container" id="searchCus">
+        <img src="assets/images/search.png">
+        <input type="text" placeholder="Search by customer id..">
+    </div>
+
+    <div class="col col-lg-4 col-md-12 col-12 container" id="custDetailDiv">
+        <form action="" class="row">
+            <h3>Customer details</h3>
+            <div class="mb-3 col-lg-12 col-md-4">
+                <label for="custId" class="form-label">Customer ID</label>
+                <input type="text" class="form-control" id="cust_id" placeholder="C001">
+            </div>
+            <div class="mb-3 col-lg-12 col-md-8">
+                <label for="custName" class="form-label">Customer Name</label>
+                <input type="text" class="form-control" id="cust_name">
+            </div>
+            <div class="mb-3 col-lg-12 col-md-8">
+                <label for="cust_address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="cust_address">
+            </div>
+            <div class="mb-3 col-lg-12 col-md-4">
+                <label for="cust_contact" class="form-label">Contact</label>
+                <input type="text" class="form-control" id="cust_contact" placeholder="+94 7* *** ****">
+            </div>
+            <div class="buttons">
+                <button type="submit" class="btn btn-success mb-1" id="cus_saveBtn">Save</button>
+                <button type="button" class="btn btn-primary mb-1" id="cus_updateBtn">Update</button>
+                <button type="button" class="btn btn-danger mb-1" id="cus_deleteBtn">Delete</button>
+                <button type="reset" class="btn btn-warning mb-1" id="cus_clearBtn">Clear</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="cust_tableDiv">
+        <div class="col col-lg-8" id="cust_table">
+            <table class="table table-bordered">
+                <thead>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Salary</th>
+                </thead>
+
+                <tbody id="cusTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section id="itemSection">
+    <div>
+        <div class="div-container" id="searchItem">
+            <img src="assets/images/search.png">
+            <input type="text" placeholder="Search by item code..">
+        </div>
+
+        <div class="col col-lg-4 col-md-12 col-12 container" id="detailDiv">
+            <form action="" class="row">
+                <h3>Item details</h3>
+                <div class="mb-3 col-lg-12 col-md-4">
+                    <label for="item_code" class="form-label">Item Code :</label>
+                    <input type="text" class="form-control" id="item_code" placeholder="I001">
+                </div>
+                <div class="mb-3 col-lg-12 col-md-8">
+                    <label for="item_des" class="form-label">Description :</label>
+                    <input type="text" class="form-control" id="item_des">
+                </div>
+                <div class="mb-3 col-lg-12 col-md-8">
+                    <label for="item_price" class="form-label">Unit Price :</label>
+                    <input type="number" class="form-control" id="item_price" placeholder="Rs: 000000.00">
+                </div>
+                <div class="mb-3 col-lg-12 col-md-4">
+                    <label for="item_qty" class="form-label">Qty :</label>
+                    <input type="number" class="form-control" id="item_qty" placeholder="00">
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-success mb-1" id="item_saveBtn">Save</button>
+                    <button type="button" class="btn btn-primary mb-1" id="item_updateBtn">Update</button>
+                    <button type="button" class="btn btn-danger mb-1" id="item_deleteBtn">Delete</button>
+                    <button type="reset" class="btn btn-warning mb-1" id="item_clearBtn">Clear</button>
+                </div>
+            </form>
+        </div>
+        <div id="tableDiv">
+            <div class="col col-lg-8" id="item_table">
+                <table class="table table-bordered">
+                    <thead>
+                    <th>Code</th>
+                    <th>Desc</th>
+                    <th>UnitPrice</th>
+                    <th>QtyOnHand</th>
+                    </thead>
+
+                    <tbody id="itemTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="orderSection">
+    <section class="container">
+        <div class="row mb-3">
+            <div class="col container customer-pane">
+                <div class="row"><h2>Invoice Details</h2></div>
+
+                <form action="" class="row">
+                    <div class="mb-3 col-lg-2 col-md-4 col-12">
+                        <label for="orderId" class="form-label">Order ID</label>
+                        <input type="text" class="form-control" id="orderId" placeholder="O001">
+                    </div>
+                    <div class="mb-3 col-lg-2 col-md-4 col-12">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="text" class="form-control" id="date">
+                    </div>
+                    <div id="customerSelector" class="mb-3 col-lg-2 col-md-4 col-12">
+                        <label for="orderCusId" class="form-label">Customer ID</label>
+                        <select id="orderCusId" class="form-select black-border-1" aria-label="Default select example">
+                        </select>
+                    </div>
+                    <div class="mb-3 col-lg-2 col-md-8 col-12">
+                        <label for="orderCustName" class="form-label">Customer Name</label>
+                        <input type="text" class="form-control" id="orderCustName">
+                    </div>
+                    <div class="mb-3 col-lg-2 col-md-8 col-12">
+                        <label for="cusAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="cusAddress">
+                    </div>
+                    <div class="mb-3 col-lg-2 col-md-4 col-12">
+                        <label for="cusContact" class="form-label">Contact</label>
+                        <input type="text" class="form-control" id="cusContact">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-12 container item-pane mb-3">
+                <div class="row"><h2>Item Details</h2></div>
+                <form action="" class="row">
+                    <div id="itemSelector" class="mb-3 col-lg-2 col-md-4">
+                        <label for="orderItemCode" class="form-label">Item code</label>
+                        <select id="orderItemCode" class="form-select black-border-1" aria-label="Default select example">
+                        </select>
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-8">
+                        <label for="orderItemDesc" class="form-label">Description :</label>
+                        <input type="text" class="form-control" id="orderItemDesc">
+                    </div>
+                    <div class="mb-3 col-lg-4 col-md-6">
+                        <label for="orderItemPrice" class="form-label">Unit Price :</label>
+                        <input type="number" class="form-control" id="orderItemPrice" placeholder="Rs: 0000.00">
+                    </div>
+                    <div class="mb-3 col-lg-4 col-md-3">
+                        <label for="qty-on-hand" class="form-label">Qty on hand :</label>
+                        <input type="number" class="form-control" id="qty-on-hand" placeholder="00">
+                    </div>
+                    <div class="mb-3 col-lg-4 col-md-3">
+                        <label for="orderQty" class="form-label">Order Quantity :</label>
+                        <input type="number" class="form-control" id="orderQty" placeholder="00">
+                    </div>
+                    <div class="mb-3 col-lg-4 col-3">
+                        <label for="add-item-btn" class="form-label" style="color: #FEFFD4;">o</label><br>
+                        <button id="add-item-btn" type="button" class="btn btn-primary mb-1 black-border-1">Add Item +</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col container order-pane mb-3 d-flex">
+                <form action="" class="row">
+
+                    <div class="col-lg-5 col-md-6 col-12 row mt-2 mb-2">
+                        <div class="col col-12 mb-2">
+                            <label class="total" id="sum">Total: Rs.000.00</label>
+                        </div>
+                        <div class="col col-12">
+                            <label id="subTotal" class="total">SubTotal: Rs.000.00</label>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 col-md-6 col-12 row align-items-center">
+                        <div class="mb-3 col-lg-4 col-md-4">
+                            <label for="discount" class="form-label">Discount</label>
+                            <input type="number" class="form-control" id="discount" placeholder="00%">
+                        </div>
+                        <div class="mb-3 col-lg-8 col-md-8">
+                            <label for="cash" class="form-label">Cash</label>
+                            <input type="number" class="form-control" id="cash" placeholder="Rs: 0000.00">
+                        </div>
+                        <div class="mb-3 col-lg-6 col-md-7">
+                            <label for="balance" class="form-label">Balance</label>
+                            <input type="number" class="form-control" id="balance" placeholder="Rs: 0000.00">
+                        </div>
+
+                        <div class="mb-3 col-lg-6 col-md-5">
+                            <label for="order-btn" class="form-label" style="color: #B2FFBA;">o</label><br>
+                            <button id="order-btn" type="submit" class="btn btn-success mb-1">Order</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <table class="table table-bordered">
+                    <thead>
+                    <th>Item Code</th>
+                    <th>Description</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    </thead>
+
+                    <tbody id="orderTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</section>
+<script src="assets/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="module" src="/controller/ViewController.js"></script>
+<script type="module" src="/controller/UserController.js"></script>
+<script type="module" src="/controller/CustomerController.js"></script>
+<script type="module" src="/controller/ItemController.js"></script>
+<script type="module" src="/controller/OrderController.js"></script>
+</body>
+</html>

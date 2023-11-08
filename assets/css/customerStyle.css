@@ -1,0 +1,84 @@
+#customerSection {
+    width: 100vw;
+    height: 100vh;
+    background: #E3F4F4;
+}
+#title {
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Book Antiqua", serif;
+    color: #3E54AC;
+}
+header {
+    position: fixed;
+    z-index: 9999;
+    width: 100vw;
+    top: 20px;
+    height: 90px;
+    background-color: white;
+}
+ul {
+    position: relative;
+    top: -55px;
+    left: 850px;
+}
+.div-container {
+    background-color: white;
+    border-radius: 20px;
+}
+#searchCus {
+    position: absolute;
+    width: 500px;
+    height: 80px;
+    top: 130px;
+    left: 50px;
+}
+#searchCus > img {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    width: 40px;
+}
+#searchCus > input {
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    width: 350px;
+    height: 40px;
+    border-radius: 20px;
+}
+#custDetailDiv {
+    position: absolute;
+    top: 230px;
+    left: 50px;
+    width: 500px;
+    height: 450px;
+    background-color: white;
+    border-radius: 20px;
+}
+#custDetailDiv > form > div > input {
+    border: 1px solid black;
+    border-radius: 20px;
+}
+h3 {
+    color: #6ea8fe;
+}
+table tbody, table thead {
+    border: 1px solid black;
+}
+#cust_tableDiv {
+    position: absolute;
+    top: 130px;
+    left: 600px;
+    background-color: white;
+    border-radius: 20px;
+    width: 850px;
+}
+#cust_table {
+    position: relative;
+    top: 10px;
+    left: 30px;
+}
