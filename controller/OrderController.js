@@ -1,5 +1,5 @@
 import {OrderModel} from "/model/OrderModel.js";
-import {customerDB, itemDB, orderDB} from "/db/DB.js";
+import {customerDB, itemDB, orderDB} from "../db/DB.js";
 import {ItemModel} from "/model/ItemModel.js";
 
 let cusRowIndex = null;
@@ -39,21 +39,46 @@ loadIdDate();
 
 
 export const loadCustomers = () => {
+    try {
+        const $orderCusId = $("#orderCusId");
+        $orderCusId.empty();
 
+        if (customerDB && Array.isArray(customerDB)) {
+            customerDB.forEach((customer) => {
+                $orderCusId.append(`<option value="${customer.id}">${customer.id}</option>`);
+            });
+        } else {
+            console.error("Invalid customer data");
+        }
+    } catch (error) {
+        console.error("Error loading customers:", error);
+    }
+};
+
+export const loadItems = () => {
+    try {
+        const $orderItemId = $("#orderItemId");
+        $orderItemId.empty();
+
+        if (itemDB && Array.isArray(itemDB)) {
+            itemDB.forEach((item) => {
+                $orderItemId.append(`<option value="${item.code}">${item.code}</option>`);
+            });
+        } else {
+            console.error("Invalid item data");
+        }
+    } catch (error) {
+        console.error("Error loading items:", error);
+    }
+};
+
+/*
+export const loadCustomers = () => {
     $("#orderCusId").empty();
     customerDB.map((orderCusId) => {
         $("#orderCusId").append(`<option value="${orderCusId.id}">${orderCusId.id}</option>`);
     });
 };
-
-/*export const loadCustomers = () => {
-    $("#orderCusId").empty();
-    customerDB.forEach((orderCusId) => {
-        $("#orderCusId").append(`<option value="${orderCusId.id}">${orderCusId.id}</option>`);
-    });
-};*/
-
-
 export const loadItems = () => {
 
     $("#orderItemId").empty();
@@ -61,6 +86,7 @@ export const loadItems = () => {
         $("#orderItemId").append(`<option value="${orderItemId.code}">${orderItemId.code}</option>`);
     });
 };
+*/
 
 
 $("#customerSelector").on('click','select', function (){

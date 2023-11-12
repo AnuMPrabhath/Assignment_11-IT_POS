@@ -7,7 +7,7 @@ const loadId = () =>{
     if(itemDB.length == 0){
         $("#item_code").val("I001");
     }else{
-        $("#item_code").val(generateNewId(itemDB[itemDB.length - 1].id));
+        $("#item_code").val(generateNewId(itemDB[itemDB.length - 1].code));
     }
 };
 

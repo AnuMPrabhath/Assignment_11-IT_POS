@@ -8,17 +8,30 @@ function validUsers() {
 validUsers();
 
 $("#signInBtn").on('click', () => {
-    console.log("user");
-    userDB.map((user) => {
-        if (user.username === $("#userName").val() && user.password === $("#password").val()){
-            $("#loginSection").css("display", "none");
-            $("#dashboardSection").css("display", "block");
-        }else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: "Enter correct username & password!!",
-            });
-        }
-    });
+    const enteredUsername = $("#userName").val();
+    const enteredPassword = $("#password").val();
+
+    const user = userDB.find((user) => user.username === enteredUsername && user.password === enteredPassword);
+
+    if (user) {
+        // Successful login
+        $("#loginSection").css("display", "none");
+        $("#dashboardSection").css("display", "block");
+        $("#userName").val("");
+        $("#password").val("");
+        Swal.fire({
+            icon: 'success',
+            title: 'Welcome',
+            text: "You are Login In..",
+            showConfirmButton: false,
+            timer: 1500
+        })
+    } else {
+        // Display an error message if no matching user is found
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Enter correct username & password!!",
+        });
+    }
 });
