@@ -1,4 +1,5 @@
-/*import {loadCustomers, loadItems} from "./OrderController";*/
+import { loadCustomers } from './OrderController.js';
+import { loadItems } from './OrderController.js';
 
 const customerSectionBlock = () => {
     displayNoneSections();
@@ -23,10 +24,10 @@ const orderSectionBlock = () => {
     addClassNav();
     $("#order").addClass("nav-link active");
     $("#orderSection").css("display", "block");
-    /*loadCustomers();
-    loadItems();*/
+    loadCustomers();
+    loadItems();
 }
-const displayNoneSections = () => {
+export const displayNoneSections = () => {
     $("#loginSection").css("display", "none");
     $("#dashboardSection").css("display", "none");
     $("#navBarSection").css("display", "none");

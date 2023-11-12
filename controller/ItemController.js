@@ -1,5 +1,5 @@
-import {itemDB} from "../db/DB";
-import {ItemModel} from "../model/ItemModel";
+import {itemDB} from "../db/DB.js";
+import {ItemModel} from "../model/ItemModel.js";
 
 let row_index = null;
 
@@ -16,23 +16,23 @@ loadId();
 const loadItemData = () => {
     $("#itemTableBody").html("");
     itemDB.map((item) => {
-        $("#itemTableBody").append(`<tr><td>${item.id}</td><td>${item.name}</td><td>${item.price}</td><td>${item.qty}</td></tr>`);
+        $("#itemTableBody").append(`<tr><td>${item.code}</td><td>${item.description}</td><td>${item.price}</td><td>${item.qty}</td></tr>`);
     });
 };
 
 $(".item").on('click', ()=> loadItemData());
 
-//save
-$("#item_saveBtn").on('click', () => {
-    console.log("ABC")
-    let id = $("#item_code").val(),
-        name = $("#item_des").val(),
+
+$("#item_saveBtn").on('click', (e) => {
+    e.preventDefault();
+    let code = $("#item_code").val(),
+        description = $("#item_des").val(),
         price = Number.parseFloat($("#item_price").val()),
         qty = Number.parseInt($("#item_qty").val());
+    console.log(name);
+    if(!checkValidation(code, description, price, qty)) return;
 
-    if(!checkValidation(id, name, price, qty)) return;
-
-    let item = new ItemModel(id, name, price, qty);
+    let item = new ItemModel(code, description, price, qty);
     itemDB.push(item);
 
     loadItemData();
@@ -46,7 +46,7 @@ $("#item_saveBtn").on('click', () => {
     })
 });
 
-//search
+
 $("#itemTableBody").on('click', "tr", function(){
     let selectedId = $(this).find("td:nth-child(1)").text();
 
@@ -55,10 +55,10 @@ $("#itemTableBody").on('click', "tr", function(){
     $("#item_price").val( Number.parseFloat($(this).find("td:nth-child(3)").text() ) );
     $("#item_qty").val( Number.parseInt( $(this).find("td:nth-child(4)").text() ) );
 
-    row_index = itemDB.findIndex((item => item.id === selectedId));
+    row_index = itemDB.findIndex((item => item.code === selectedId));
 });
 
-//update
+
 $("#item_updateBtn").on('click', () => {
     let code = $("#item_code").val(),
         description = $("#item_des").val(),
@@ -84,7 +84,7 @@ $("#item_updateBtn").on('click', () => {
     })
 });
 
-//remove
+
 $("#item_deleteBtn").on('click', () => {
     if (row_index == null) return;
     Swal.fire({
@@ -110,29 +110,29 @@ $("#item_deleteBtn").on('click', () => {
     })
 });
 
-//validation
+
 function checkValidation(code, description, price, qty){
     console.log(code);
-    if(!/^I\d{3}$/.test(id)){ //chekc ID
+    if(!/^I\d{3}$/.test(code)){ 
         showErrorAlert("Please enter a valid code!")
         return false;
     }
-    if(!description){ //check description
+    if(!description){ 
         showErrorAlert("Please enter description!");
         return false;
     }
-    if(!/^\d+(\.\d{1,2})?$/.test(price.toString())){ //check address
+    if(!/^\d+(\.\d{1,2})?$/.test(price.toString())){ 
         showErrorAlert("Please enter a price for item!");
         return false;
     }
-    if(!qty || qty === 0){ //check salary
+    if(!qty || qty === 0){ 
         showErrorAlert("Please enter a quantity");
         return false;
     }
     return true;
 }
 
-//showErrorAlert
+
 function showErrorAlert(message){
     Swal.fire({
         icon: 'error',
@@ -141,7 +141,7 @@ function showErrorAlert(message){
     });
 }
 
-//generateNewID
+
 function generateNewId(lastId) {
     const lastNumber = parseInt(lastId.slice(1), 10);
     const newNumber = lastNumber + 1;

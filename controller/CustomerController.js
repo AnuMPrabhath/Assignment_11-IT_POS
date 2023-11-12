@@ -1,5 +1,5 @@
-import {customerDB} from "../db/DB";
-import {CustomerModel} from "../model/CustomerModel";
+import {customerDB} from "../db/DB.js";
+import {CustomerModel} from "../model/CustomerModel.js";
 
 var row_index = null;
 
@@ -14,18 +14,20 @@ const loadId = () =>{
 loadId();
 
 const loadCustomerData = () => {
-    $('#cusTableBody').html(""); // make tbody empty
+    $('#cusTableBody').empty();
     customerDB.map((customer) => {
-        $("#cusTableBody").append(<tr><td>${customer.id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.contact}</td></tr>);
+        $("#cusTableBody").append(`<tr><td>${customer.id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.contact}</td></tr>`);
     });
 };
 
 
 
+
 $(".customer").on('click', ()=> loadCustomerData());
 
-// submit
-$("#cus_saveBtn").on('click', () => {
+
+$("#cus_saveBtn").on('click', (e) => {
+    e.preventDefault();
     console.log("ABC")
     let id = $("#cust_id").val(),
         name = $("#cust_name").val(),
@@ -48,7 +50,7 @@ $("#cus_saveBtn").on('click', () => {
     })
 });
 
-//search
+
 $("#cusTableBody").on('click', "tr", function(){
     let selectedId = $(this).find("td:nth-child(1)").text();
 
@@ -60,7 +62,7 @@ $("#cusTableBody").on('click', "tr", function(){
     row_index = customerDB.findIndex((customer => customer.id === selectedId));
 });
 
-// update
+
 $("#cus_updateBtn").on('click', () => {
     let id = $("#cust_id").val(),
         name = $("#cust_name").val(),
@@ -87,7 +89,7 @@ $("#cus_updateBtn").on('click', () => {
     })
 });
 
-// delete
+
 $("#cus_deleteBtn").on('click', () => {
     if (row_index == null) return;
     Swal.fire({
@@ -113,29 +115,29 @@ $("#cus_deleteBtn").on('click', () => {
     })
 });
 
-//validation
+
 function checkValidation(id, name, address, contact){
     console.log(id);
-    if(!/^C\d{3}$/.test(id)){ //chekc ID
+    if(!/^C\d{3}$/.test(id)){ 
         showErrorAlert("Please enter a valid ID!")
         return false;
     }
-    if(!name){ //check name
+    if(!name){ 
         showErrorAlert("Please enter a valid name!");
         return false;
     }
-    if(!address){ //check address
+    if(!address){ 
         showErrorAlert("Please enter a valid address!");
         return false;
     }
-    if(!contact){ //check address
+    if(!contact){
         showErrorAlert("Please enter a valid Contact!");
         return false;
     }
     return true;
 }
 
-//showErrorAlert
+
 function showErrorAlert(message){
     Swal.fire({
         icon: 'error',
@@ -144,7 +146,7 @@ function showErrorAlert(message){
     });
 }
 
-//generateNewID
+
 function generateNewId(lastId) {
     const lastNumber = parseInt(lastId.slice(1), 10);
     const newNumber = lastNumber + 1;

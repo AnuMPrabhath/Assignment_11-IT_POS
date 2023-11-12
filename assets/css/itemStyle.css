@@ -1,10 +1,15 @@
+#itemSection {
+    width: 100vw;
+    height: 100vh;
+    background: #E3F4F4;
+}
 #title {
     position: absolute;
     margin-top: 20px;
     margin-left: 50px;
     font-size: 30px;
     font-weight: bold;
-    font-family: "Book Antiqua";
+    font-family: "Book Antiqua", serif;
     color: #3E54AC;
 }
 header {

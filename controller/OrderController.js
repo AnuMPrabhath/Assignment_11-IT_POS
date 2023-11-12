@@ -37,7 +37,7 @@ const loadIdDate = () =>{
 
 loadIdDate();
 
-//lode customer to combobox
+
 export const loadCustomers = () => {
 
     $("#orderCusId").empty();
@@ -46,17 +46,25 @@ export const loadCustomers = () => {
     });
 };
 
-//lode Items to combobox
+/*export const loadCustomers = () => {
+    $("#orderCusId").empty();
+    customerDB.forEach((orderCusId) => {
+        $("#orderCusId").append(`<option value="${orderCusId.id}">${orderCusId.id}</option>`);
+    });
+};*/
+
+
 export const loadItems = () => {
 
     $("#orderItemId").empty();
     itemDB.map((orderItemId) => {
-        $("#orderItemId").append(`<option value="${orderItemId.id}">${orderItemId.id}</option>`);
+        $("#orderItemId").append(`<option value="${orderItemId.code}">${orderItemId.code}</option>`);
     });
 };
 
-//setCustomerDetails
+
 $("#customerSelector").on('click','select', function (){
+/*$("#customerSelector").on('change', 'select', function () {*/
     cusRowIndex = customerDB.findIndex(customer => customer.id === $(this).val());
     if(cusRowIndex === -1) return;
     $("#orderCustName").val( customerDB[cusRowIndex].name );
@@ -64,7 +72,7 @@ $("#customerSelector").on('click','select', function (){
     $("#cusContact").val( customerDB[cusRowIndex].contact );
 });
 
-//setItemDetails
+
 $("#itemSelector").on('click','select', function (){
     itemRowIndex = itemDB.findIndex(item => item.code === $(this).val());
     if(itemRowIndex === -1) return;
@@ -73,10 +81,10 @@ $("#itemSelector").on('click','select', function (){
     $("#qty-on-hand").val( itemDB[itemRowIndex].qty );
 });
 
-//add-item action
+
 $("#add-item-btn").on('click', ()=>{
     let code = $("#orderItemCode").val(),
-        desc = $("#orderItemDesc").val(),
+        description = $("#orderItemDesc").val(),
         price = Number.parseFloat($("#orderItemPrice").val()),
         qty = Number.parseInt($("#orderQty").val()),
         itemTotal = price * qty;
@@ -90,7 +98,7 @@ $("#add-item-btn").on('click', ()=>{
     console.log("index : " + existingItem);
 
     if(existingItem < 0){
-        addedItems.push(new ItemModel(code, desc, price, qty, itemTotal));
+        addedItems.push(new ItemModel(code, description, price, qty, itemTotal));
     }else {
         addedItems[existingItem].qty += qty;
     }
@@ -104,7 +112,7 @@ $("#add-item-btn").on('click', ()=>{
 });
 
 
-//show balance
+
 $("#cash").on('input', ()=>{
     console.log(Number.parseFloat($("#cash").val()));
     console.log(Number.parseFloat($("#subTotal").text().slice(15)));
@@ -112,13 +120,14 @@ $("#cash").on('input', ()=>{
 })
 
 $("#discount").on('input', () => {
-    let subTotals = Number.parseFloat($("#sum").text().slice(11)); // Extract the Sub Total value
-    let discount = Number.parseFloat($("#discount").val()) || 0; // Get the discount input value (default to 0 if not a valid number)
-    let discountedTotal = subTotals - (subTotals * discount / 100); // Calculate the discounted total
-    $("#subTotal").text(`Sub Total: Rs. ${discountedTotal.toFixed(2)}`); // Update the Total with the discounted value
+    let subTotals = Number.parseFloat($("#sum").text().slice(11)); 
+    let discount = Number.parseFloat($("#discount").val()) || 0; 
+    let discountedTotal = subTotals - (subTotals * discount / 100); 
+    $("#subTotal").text(`Sub Total: Rs. ${discountedTotal.toFixed(2)}`); 
 });
-//save order
-$("#order-btn").on('click', ()=>{
+
+$("#order-btn").on('click', (e)=>{
+    e.preventDefault()
     sum =0;
     console.log("ordered");
 
@@ -165,41 +174,9 @@ $("#order-btn").on('click', ()=>{
     $("#sum").text('Total: Rs.000.00');
 });
 
-/*//cancel order
-$("#cancel-order-btn").on('click', ()=>{
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Cancel the order!'
-    }).then((result) => {
-        if (result.isConfirmed) {
 
-            addedItems.map((addedItem) =>{
-                let i = item_db.findIndex(item => item.id === addedItem.id);
-                item_db[i].qty += addedItem.qty;
-            });
 
-            $("#order-section form").trigger('reset');
-            $("select").val("");;
-            $("#subTotal").text('SubTotal: Rs.000.00');
-            $("#sum").text('Total: Rs.000.00');
-            addedItems = [];
-            loadAddItemData();
 
-            Swal.fire(
-                `Canceled`,
-                'The Order has been canceled!',
-                'success'
-            )
-        }
-    })
-})*/
-
-//check validations
 function checkValidation(orderId, date, customer, items, total, discount) {
     if(!customer){
         showErrorAlert("Please select a customer to place order");
@@ -220,14 +197,14 @@ function checkValidation(orderId, date, customer, items, total, discount) {
     return true;
 }
 
-//generateNewID
+
 function generateNewId(lastId) {
     const lastNumber = parseInt(lastId.slice(2), 10);
     const newNumber = lastNumber + 1;
     return "OD" + newNumber.toString().padStart(3, "0");
 }
 
-//showErrorAlert
+
 function showErrorAlert(message){
     Swal.fire({
         icon: 'error',

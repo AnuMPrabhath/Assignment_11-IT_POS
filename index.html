@@ -93,11 +93,11 @@
         <form action="" class="row">
             <h3>Customer details</h3>
             <div class="mb-3 col-lg-12 col-md-4">
-                <label for="custId" class="form-label">Customer ID</label>
+                <label for="cust_id" class="form-label">Customer ID</label>
                 <input type="text" class="form-control" id="cust_id" placeholder="C001">
             </div>
             <div class="mb-3 col-lg-12 col-md-8">
-                <label for="custName" class="form-label">Customer Name</label>
+                <label for="cust_name" class="form-label">Customer Name</label>
                 <input type="text" class="form-control" id="cust_name">
             </div>
             <div class="mb-3 col-lg-12 col-md-8">
@@ -135,7 +135,7 @@
 <section id="itemSection">
     <div>
         <div class="div-container" id="searchItem">
-            <img src="assets/images/search.png">
+            <img src="assets/images/search.png" alt="search">
             <input type="text" placeholder="Search by item code..">
         </div>
 
@@ -144,7 +144,7 @@
                 <h3>Item details</h3>
                 <div class="mb-3 col-lg-12 col-md-4">
                     <label for="item_code" class="form-label">Item Code :</label>
-                    <input type="text" class="form-control" id="item_code" placeholder="I001">
+                    <input type="text" class="form-control" id="item_code">
                 </div>
                 <div class="mb-3 col-lg-12 col-md-8">
                     <label for="item_des" class="form-label">Description :</label>
@@ -152,7 +152,7 @@
                 </div>
                 <div class="mb-3 col-lg-12 col-md-8">
                     <label for="item_price" class="form-label">Unit Price :</label>
-                    <input type="number" class="form-control" id="item_price" placeholder="Rs: 000000.00">
+                    <input type="text" class="form-control" id="item_price" placeholder="Rs: 000000.00">
                 </div>
                 <div class="mb-3 col-lg-12 col-md-4">
                     <label for="item_qty" class="form-label">Qty :</label>
@@ -307,10 +307,10 @@
 <script src="assets/jquery/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script type="module" src="/controller/ViewController.js"></script>
-<script type="module" src="/controller/UserController.js"></script>
-<script type="module" src="/controller/CustomerController.js"></script>
-<script type="module" src="/controller/ItemController.js"></script>
-<script type="module" src="/controller/OrderController.js"></script>
+<script type="module" src="controller/ViewController.js"></script>
+<script type="module" src="controller/UserController.js"></script>
+<script type="module" src="controller/CustomerController.js"></script>
+<script type="module" src="controller/ItemController.js"></script>
+<script type="module" src="controller/OrderController.js"></script>
 </body>
 </html>
